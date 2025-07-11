@@ -13,6 +13,7 @@
 
 .hero-text {
   max-width: 700px;
+  width: 100%;
 }
 
 .home-title {
@@ -21,6 +22,7 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #27160C;
   margin-bottom: 1rem;
+  line-height: 1.2;
 }
 
 .subtitle {
@@ -43,4 +45,63 @@
 
 .explore-btn:hover {
   background-color: #27160C;
+}
+
+/* 📱 Mobile Devices */
+@media (max-width: 576px) {
+  .home-title {
+    font-size: 2.2rem;
+  }
+
+  .subtitle {
+    font-size: 1.3rem;
+  }
+
+  .explore-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  .main-1 {
+    padding: 3rem 1rem;
+  }
+}
+
+/* 🧾 Tablets */
+@media (min-width: 577px) and (max-width: 960px) {
+  .home-title {
+    font-size: 2.8rem;
+  }
+
+  .subtitle {
+    font-size: 1.6rem;
+  }
+
+  .explore-btn {
+    padding: 0.7rem 1.4rem;
+    font-size: 1rem;
+  }
+
+  .main-1 {
+    padding: 4rem 1.5rem;
+  }
+}
+
+/* 🖥️ Large Screens */
+@media (min-width: 1200px) {
+  .home-title {
+    font-size: 4rem;
+  }
+
+  .subtitle {
+    font-size: 2.2rem;
+  }
+
+  .explore-btn {
+    font-size: 1.1rem;
+  }
+
+  .main-1 {
+    padding: 6rem 3rem;
+  }
 }
