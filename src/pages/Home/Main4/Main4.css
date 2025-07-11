@@ -1,0 +1,65 @@
+/* src/components/Main4.css */
+
+.main-4 {
+    background-color: #27160C;
+    padding: 10rem 2rem;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #F4ECD0;
+  }
+  
+  .contact-section {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .contact-subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #F4ECD0;
+  }
+  
+  .contact-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+  
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .contact-btn {
+    text-decoration: none;
+    padding: 0.8rem 1.8rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    color: #27160C;
+  }
+  
+  .contact-btn.instagram {
+    background-color: #F4ECD0;
+  }
+  
+  .contact-btn.instagram:hover {
+    background-color: #F4ECD0;
+    transform: scale(1.05);
+  }
+  
+  .contact-btn.telegram {
+    background-color: #27160C;
+    border: 1px solid #F4ECD0;
+    color: #F4ECD0;
+  }
+  
+  .contact-btn.telegram:hover {
+    background-color: #F4ECD0;
+    color: #27160C;
+    transform: scale(1.05);
+  }
+  
