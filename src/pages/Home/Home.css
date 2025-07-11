@@ -6,6 +6,8 @@
     align-items: center;
     text-align: center;
     padding: 4rem 2rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
   }
   
   .hero-text {
@@ -13,21 +15,25 @@
   }
   
   .home-title {
-    font-size: 2.8rem;
+    font-size: 3.5rem;
     font-weight: 700;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #27160C;
     margin-bottom: 1rem;
   }
   
   .subtitle {
-    font-size: 1.2rem;
-    color: #444;
+    font-size: 2rem;
+    color: #322015;
     margin-bottom: 2rem;
+    font-weight: 500;
   }
   
   .explore-btn {
     display: inline-block;
-    background-color: #1a5bff;
+    /* background-color: #27160C; */
+    background-color: #3e2a1e;
+
     color: white;
     padding: 0.75rem 1.5rem;
     border-radius: 8px;
@@ -37,6 +43,8 @@
   }
   
   .explore-btn:hover {
-    background-color: #0f4fe0;
-  }
+    /* background-color: #573e2f; */
+    background-color: #27160C;
+
+}
   
