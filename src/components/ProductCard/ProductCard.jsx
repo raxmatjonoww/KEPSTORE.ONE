@@ -1,10 +1,7 @@
-import { useState } from "react";
+// src/components/ProductCard/ProductCard.jsx
 import "./ProductCard.css";
 
-function ProductCard({ product }) {
-  const [isLiked, setIsLiked] = useState(false);
-  const handleLike = () => setIsLiked(!isLiked);
-
+function ProductCard({ product, onAddToCart }) {
   return (
     <div className="product-card glass-effect">
       <img src={product.image} alt={product.title} className="product-image" />
@@ -16,11 +13,11 @@ function ProductCard({ product }) {
         <div className="product-footer">
           <span className="product-price">${product.price}</span>
           <button
-            onClick={handleLike}
-            className={`like-button ${isLiked ? "liked" : ""}`}
-            aria-label="Like"
+            className="cart-button"
+            onClick={onAddToCart}
+            title="Добавить в корзину"
           >
-            {isLiked ? "❤️" : "🤍"}
+            🛒
           </button>
         </div>
       </div>

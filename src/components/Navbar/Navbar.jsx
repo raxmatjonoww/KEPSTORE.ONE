@@ -27,7 +27,7 @@ function Navbar() {
   }, []);
 
   const handleScroll = (target) => {
-    setMenuOpen(false); // Close menu on click
+    setMenuOpen(false);
     if (location.pathname !== "/") {
       navigate("/", { state: { scrollTo: target } });
     } else {
@@ -56,16 +56,16 @@ function Navbar() {
       </div>
 
       <div className={`navbar-links ${menuOpen ? "open" : ""}`}>
-        <span onClick={() => handleScroll("glavnoe")} className="nav-link">Главная</span>
-        <span onClick={() => handleScroll("onas")} className="nav-link">О нас</span>
+        <span onClick={() => handleScroll("glavnoe")} className="nav-link">🏠 Главная</span>
+        <span onClick={() => handleScroll("onas")} className="nav-link">📖 О нас</span>
 
-        {/* ✅ New Products Link */}
+        {/* ✅ Product page link */}
         <Link to="/products" className="nav-link" onClick={() => setMenuOpen(false)}>
-        Продукты
+          🛍️ Товары
         </Link>
 
-        <span onClick={() => handleScroll("faq")} className="nav-link">FAQ</span>
-        <span onClick={() => handleScroll("kontakt")} className="nav-link">Контакты</span>
+        <span onClick={() => handleScroll("faq")} className="nav-link">❓ FAQ</span>
+        <span onClick={() => handleScroll("kontakt")} className="nav-link">📞 Контакты</span>
 
         {!user ? (
           <Link to="/admin/login" className="nav-icon-link" title="Вход для админа">

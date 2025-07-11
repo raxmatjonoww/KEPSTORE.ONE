@@ -12,8 +12,9 @@ import AdminPanel from "./pages/AdminPanel/AdminPanel";
 import EditProduct from "./pages/EditProduct/EditProduct";
 import AdminLogin from "./pages/AdminLogin/AdminLogin";
 import ProductList from "./pages/Products/ProductList";
-import { useEffect } from "react";
-import { scroller } from "react-scroll"; // 🧠 react-scroll dan import qilamiz
+import Cart from "./pages/Cart/Cart"; // 🛒 Savat sahifasini import qilamiz
+import { useEffect, useState } from "react";
+import { scroller } from "react-scroll";
 
 function ScrollHandler() {
   const location = useLocation();
@@ -26,7 +27,7 @@ function ScrollHandler() {
           duration: 800,
           delay: 0,
           smooth: "easeInOutQuart",
-          offset: -80, // optional: agar sticky navbar bo‘lsa
+          offset: -80,
         });
       }, 300);
     }
@@ -36,9 +37,15 @@ function ScrollHandler() {
 }
 
 function App() {
+  const [cartItems, setCartItems] = useState([]);
+
+  const handleAddToCart = (product) => {
+    setCartItems((prev) => [...prev, product]);
+  };
+
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar cartItems={cartItems} /> {/* 🛒 Pass cartItems to Navbar */}
       <ScrollHandler />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -46,7 +53,11 @@ function App() {
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/admin/add" element={<AddProduct />} />
         <Route path="/admin/edit/:id" element={<EditProduct />} />
-        <Route path="/products" element={<ProductList />} />
+        <Route
+          path="/products"
+          element={<ProductList onAddToCart={handleAddToCart} />}
+        />
+        <Route path="/cart" element={<Cart cartItems={cartItems} />} />
       </Routes>
     </BrowserRouter>
   );

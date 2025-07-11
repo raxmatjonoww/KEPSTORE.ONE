@@ -4,7 +4,7 @@ import { supabase } from "../../supabaseClient";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import "./ProductList.css";
 
-function ProductList() {
+function ProductList({ onAddToCart }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -15,7 +15,7 @@ function ProductList() {
       const { data, error } = await supabase.from("products").select("*");
 
       if (error) {
-        setError("Tovarlarni yuklashda xatolik yuz berdi.");
+        setError("Ошибка при загрузке товаров.");
         console.error(error);
       } else {
         setProducts(data || []);
@@ -28,25 +28,28 @@ function ProductList() {
   }, []);
 
   return (
-    
     <div className="product-list">
-    <div className="product-list-wrapper">
-      <h2 className="product-list-title">🛍️ Tovarlar</h2>
+      <div className="product-list-wrapper">
+        <h2 className="product-list-title">Наши товары</h2>
 
-      {loading ? (
-        <p className="product-status-text">⏳ Yuklanmoqda...</p>
-      ) : error ? (
-        <p className="product-status-text error">{error}</p>
-      ) : products.length === 0 ? (
-        <p className="product-status-text">🚫 Tovarlar topilmadi</p>
-      ) : (
-        <div className="product-grid">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      )}
-    </div>
+        {loading ? (
+          <p className="product-status-text">Загрузка...</p>
+        ) : error ? (
+          <p className="product-status-text error">{error}</p>
+        ) : products.length === 0 ? (
+          <p className="product-status-text">Товары не найдены</p>
+        ) : (
+          <div className="product-grid">
+            {products.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onAddToCart={() => onAddToCart(product)}
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
