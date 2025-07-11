@@ -1,30 +1,17 @@
-// src/components/Navbar/Navbar.jsx
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "../../supabaseClient";
-import { FaUserShield, FaBars, FaTimes } from "react-icons/fa";
+import { FaUserShield, FaBars, FaTimes, FaShoppingCart, FaUserPlus, FaUser } from "react-icons/fa";
 import { scroller } from "react-scroll";
+import { useAuth } from "../../context/AuthContext";
 import "./Navbar.css";
 
-function Navbar() {
-  const [user, setUser] = useState(null);
+function Navbar({ cartItems = [] }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
-  useEffect(() => {
-    supabase.auth.getUser().then(({ data }) => {
-      setUser(data?.user || null);
-    });
-
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user || null);
-    });
-
-    return () => {
-      listener?.subscription?.unsubscribe();
-    };
-  }, []);
+  const { user, isAdmin } = useAuth();
 
   const handleScroll = (target) => {
     setMenuOpen(false);
@@ -58,25 +45,44 @@ function Navbar() {
       <div className={`navbar-links ${menuOpen ? "open" : ""}`}>
         <span onClick={() => handleScroll("glavnoe")} className="nav-link">🏠 Главная</span>
         <span onClick={() => handleScroll("onas")} className="nav-link">📖 О нас</span>
-
-        {/* ✅ Product page link */}
-        <Link to="/products" className="nav-link" onClick={() => setMenuOpen(false)}>
-          🛍️ Товары
-        </Link>
-
+        <Link to="/products" className="nav-link" onClick={() => setMenuOpen(false)}>🛍️ Товары</Link>
         <span onClick={() => handleScroll("faq")} className="nav-link">❓ FAQ</span>
         <span onClick={() => handleScroll("kontakt")} className="nav-link">📞 Контакты</span>
 
-        {!user ? (
-          <Link to="/admin/login" className="nav-icon-link" title="Вход для админа">
-            <FaUserShield className="admin-icon" />
-          </Link>
-        ) : (
+        {user && !isAdmin && (
+          <>
+            <Link to="/cart" className="nav-icon-link" title="Корзина">
+              <FaShoppingCart className="admin-icon" />
+              {cartItems.length > 0 && (
+                <span className="cart-badge">{cartItems.length}</span>
+              )}
+            </Link>
+            <Link to="/profile" className="nav-icon-link" title="Профиль">
+              <FaUser className="admin-icon" />
+            </Link>
+          </>
+        )}
+
+        {!user && (
+          <>
+            <Link to="/register" className="nav-icon-link" title="Регистрация">
+              <FaUserPlus className="admin-icon" />
+            </Link>
+            <Link to="/admin/login" className="nav-icon-link" title="Вход">
+              <FaUserShield className="admin-icon" />
+            </Link>
+          </>
+        )}
+
+        {user && isAdmin && (
           <>
             <span className="admin-indicator">✅ Админ</span>
             <Link to="/admin/add" className="nav-link">➕ Добавить товар</Link>
-            <button onClick={handleLogout} className="logout-btn">🔓 Выйти</button>
           </>
+        )}
+
+        {user && (
+          <button onClick={handleLogout} className="logout-btn">🔓 Выйти</button>
         )}
       </div>
     </nav>
