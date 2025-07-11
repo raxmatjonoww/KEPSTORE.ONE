@@ -1,6 +1,8 @@
+// src/pages/AddProduct/AddProduct.jsx
 import { useState } from "react";
 import { supabase } from "../../supabaseClient";
 import { useNavigate } from "react-router-dom";
+import "./AddProduct.css";
 
 function AddProduct() {
   const [title, setTitle] = useState("");
@@ -13,14 +15,13 @@ function AddProduct() {
     e.preventDefault();
 
     if (!title || !price || !description || !imageFile) {
-      alert("Barcha maydonlarni to‘ldiring!");
+      alert("Пожалуйста, заполните все поля!");
       return;
     }
 
-    // ❗️ Fayl nomini tozalash: bo‘sh joy, ruscha harflar, belgilar yo‘q qilinadi
     const cleanName = imageFile.name
-      .replace(/\s+/g, "-")         // bo‘sh joy → -
-      .replace(/[^\w.-]/gi, "");    // ruscha harf, () va boshqalar → o‘chadi
+      .replace(/\s+/g, "-")
+      .replace(/[^\w.-]/gi, "");
 
     const fileName = `${Date.now()}-${cleanName}`;
 
@@ -29,8 +30,7 @@ function AddProduct() {
       .upload(fileName, imageFile);
 
     if (uploadError) {
-      console.log(uploadError);
-      alert("Rasm yuklashda xatolik: " + uploadError.message);
+      alert("Ошибка при загрузке изображения: " + uploadError.message);
       return;
     }
 
@@ -46,46 +46,48 @@ function AddProduct() {
     ]);
 
     if (insertError) {
-      alert("Mahsulotni qo‘shishda xatolik: " + insertError.message);
+      alert("Ошибка при добавлении продукта: " + insertError.message);
     } else {
-      alert("Mahsulot muvaffaqiyatli qo‘shildi!");
+      alert("✅ Продукт успешно добавлен!");
       navigate("/admin");
     }
   };
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <h2>➕ Mahsulot qo‘shish</h2>
-      <form onSubmit={handleSubmit} style={{ maxWidth: "400px", display: "flex", flexDirection: "column", gap: "1rem" }}>
+    <div className="add-product-container">
+      <h2>➕ Добавить продукт</h2>
+      <form onSubmit={handleSubmit} className="add-product-form">
         <input
           type="text"
-          placeholder="Nomi"
+          placeholder="Название продукта"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
         />
+
         <input
           type="number"
-          placeholder="Narxi"
+          placeholder="Цена"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
           required
         />
+
         <textarea
-          placeholder="Tavsifi"
+          placeholder="Описание продукта"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           required
         ></textarea>
+
         <input
           type="file"
           accept="image/*"
           onChange={(e) => setImageFile(e.target.files[0])}
           required
         />
-        <button type="submit" style={{ background: "#1a5bff", color: "#fff", padding: "10px", border: "none", borderRadius: "5px" }}>
-          Mahsulotni qo‘shish
-        </button>
+
+        <button type="submit">Добавить</button>
       </form>
     </div>
   );

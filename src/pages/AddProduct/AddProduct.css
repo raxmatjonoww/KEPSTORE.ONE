@@ -1,50 +1,68 @@
+/* src/pages/AddProduct/AddProduct.css */
+
 .add-product-container {
-    max-width: 500px;
-    margin: 4rem auto;
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-    color: #27160C;
+  max-width: 600px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color: #fff8ef;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.add-product-container h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #27160C;
+  text-align: center;
+}
+
+.add-product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.add-product-form input,
+.add-product-form textarea {
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: none;
+  font-family: inherit;
+}
+
+.add-product-form input:focus,
+.add-product-form textarea:focus {
+  outline: none;
+  border-color: #1a5bff;
+  box-shadow: 0 0 0 3px rgba(26, 91, 255, 0.1);
+}
+
+.add-product-form button {
+  padding: 0.8rem 1rem;
+  font-size: 1.1rem;
+  background-color: #27160C;
+  color: #F4ECD0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-product-form button:hover {
+  background-color: #3e2a1e;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .add-product-container {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
   }
-  
+
   .add-product-container h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
+    font-size: 1.7rem;
   }
-  
-  .add-product-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .add-product-form input,
-  .add-product-form textarea {
-    padding: 0.75rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    outline: none;
-  }
-  
-  .add-product-form textarea {
-    resize: vertical;
-    min-height: 100px;
-  }
-  
-  .btn {
-    padding: 0.75rem;
-    background-color: #1a5bff;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-  }
-  
-  .btn:hover {
-    background-color: #0f4fe0;
-  }
-  
+}

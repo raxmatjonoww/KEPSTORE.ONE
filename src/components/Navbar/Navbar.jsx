@@ -58,6 +58,12 @@ function Navbar() {
       <div className={`navbar-links ${menuOpen ? "open" : ""}`}>
         <span onClick={() => handleScroll("glavnoe")} className="nav-link">Главная</span>
         <span onClick={() => handleScroll("onas")} className="nav-link">О нас</span>
+
+        {/* ✅ New Products Link */}
+        <Link to="/products" className="nav-link" onClick={() => setMenuOpen(false)}>
+        Продукты
+        </Link>
+
         <span onClick={() => handleScroll("faq")} className="nav-link">FAQ</span>
         <span onClick={() => handleScroll("kontakt")} className="nav-link">Контакты</span>
 
