@@ -1,0 +1,92 @@
+/* src/App.css */
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body Styling */
+  body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #F4ECD0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #27160C;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+  
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 0.5rem 0;
+    font-weight: 600;
+    color: #27160C;
+  }
+  
+  /* Links */
+  a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+  }
+  
+  a:hover {
+    color: #1a5bff;
+  }
+  
+  /* Buttons */
+  button {
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: background-color 0.2s ease;
+  }
+  
+  /* Form Inputs */
+  input, textarea, select {
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+  
+  input:focus, textarea:focus, select:focus {
+    border-color: #1a5bff;
+  }
+  
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  /* Utility Classes */
+  .text-center {
+    text-align: center;
+  }
+  
+  .mt-1 { margin-top: 1rem; }
+  .mt-2 { margin-top: 2rem; }
+  .mb-1 { margin-bottom: 1rem; }
+  .mb-2 { margin-bottom: 2rem; }
+  
+  .btn {
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    background-color: #1a5bff;
+    color: white;
+    transition: 0.3s;
+  }
+  
+  .btn:hover {
+    background-color: #0f4fe0;
+  }
+  
