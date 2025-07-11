@@ -1,84 +1,126 @@
-/* src/components/Navbar.css */
-
-.navbar {
-    background-color: #27160C; /* Coffee background */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .navbar {
+    background-color: #F4ECD0;
+    color: #27160C;
+    /* padding: 1rem 3rem; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
     position: sticky;
     top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
   }
   
-  .navbar-container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 1rem 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
+  /* Logo + Text */
   .navbar-logo {
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: #F4ECD0; /* Bej */
+    display: flex;
+    align-items: center;
+    /* gap: 0.75rem; */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-decoration: none;
-    transition: 0.3s;
   }
   
-  .navbar-logo:hover {
-    color: #ffffff;
+  .logo-img {
+    width: 90px;
   }
   
+  .logo-text {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #27160C;
+  }
+  
+  /* Right side links */
   .navbar-links {
     display: flex;
     align-items: center;
-    gap: 1.2rem;
+    gap: 1.5rem;
   }
   
-  .navbar-link {
-    font-size: 1rem;
-    color: #F4ECD0;
+  /* Individual link */
+  .nav-link {
+    color: #27160C;
+    font-size: 1.1rem;
     text-decoration: none;
-    transition: 0.2s ease;
+    font-weight: 500;
+    transition: color 0.2s ease;
   }
   
-  .navbar-link:hover {
-    color: #ffffff;
+  .nav-link:hover {
+    color: #1a5bff;
   }
   
-  .admin-text {
-    font-weight: bold;
-    color: #a8ff8b;
-    font-size: 0.95rem;
+  /* Admin badge */
+  .admin-indicator {
+    color: #2ecc71;
+    font-weight: 600;
+    font-size: 1.1rem;
   }
   
+  /* Admin icon */
+  .admin-icon {
+    font-size: 3rem;
+    color: #27160C;
+    transition: color 0.3s ease;
+  }
+  
+  .admin-icon:hover {
+    color: #392214;
+  }
+  
+  .nav-icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border-radius: 8px;
+  }
+  
+  /* Logout button */
   .logout-btn {
-    background-color: #d9534f;
+    background-color: #e74c3c;
     color: white;
+    padding: 8px 16px;
+    font-size: 1rem;
     border: none;
-    padding: 6px 12px;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 0.95rem;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.3s ease;
   }
   
   .logout-btn:hover {
-    background-color: #c9302c;
+    background-color: #c0392b;
   }
   
-  /* Responsive */
-  @media (max-width: 600px) {
-    .navbar-container {
+  /* Responsive: Mobile */
+  @media (max-width: 768px) {
+    .navbar {
       flex-direction: column;
       align-items: flex-start;
-      gap: 0.8rem;
+      padding: 1rem 1.5rem;
     }
   
     .navbar-links {
       flex-direction: column;
       align-items: flex-start;
-      gap: 0.6rem;
+      width: 100%;
+      margin-top: 1rem;
+      gap: 1rem;
+    }
+  
+    .logo-text {
+      font-size: 1.6rem;
+    }
+  
+    .logout-btn {
+      width: 100%;
+      text-align: center;
     }
   }
   

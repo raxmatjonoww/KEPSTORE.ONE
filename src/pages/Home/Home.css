@@ -1,24 +1,42 @@
 .home-wrapper {
-    padding: 2rem;
-    width: 100%;
+    min-height: 80vh;
     background-color: #F4ECD0;
-    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+  
+  .hero-text {
+    max-width: 700px;
   }
   
   .home-title {
-    text-align: center;
-    font-size: 2rem;
+    font-size: 2.8rem;
+    font-weight: 700;
     color: #27160C;
-    margin-bottom: 2rem;
-    font-weight: 600;
+    margin-bottom: 1rem;
   }
   
-  /* Kichik kvadratlar ko'rinishi */
-  .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
-    justify-content: center;
-    gap: 1.5rem;
-    padding-bottom: 2rem;
+  .subtitle {
+    font-size: 1.2rem;
+    color: #444;
+    margin-bottom: 2rem;
+  }
+  
+  .explore-btn {
+    display: inline-block;
+    background-color: #1a5bff;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .explore-btn:hover {
+    background-color: #0f4fe0;
   }
   

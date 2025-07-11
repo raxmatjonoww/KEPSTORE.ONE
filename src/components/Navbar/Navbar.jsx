@@ -1,7 +1,7 @@
-// src/components/Navbar.jsx
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "../../supabaseClient";
+import { FaUserShield } from "react-icons/fa"; // 🔐 ADMIN ICON
 import "./Navbar.css";
 
 function Navbar() {
@@ -29,28 +29,23 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
-          🛍️ KEP-Store
-        </Link>
+      <Link to="/" className="navbar-logo">
+        <img src="/logo.png" alt="Logo" className="logo-img" />
+        <span className="logo-text">KEP</span>
+      </Link>
 
-        <div className="navbar-links">
-          {!user ? (
-            <Link to="/admin/login" className="navbar-link">
-              Admin Login
-            </Link>
-          ) : (
-            <>
-              <span className="admin-text">✅ Admin kirdi</span>
-              <Link to="/admin/add" className="navbar-link">
-                ➕ Tovar qo‘shish
-              </Link>
-              <button onClick={handleLogout} className="logout-btn">
-                🔓 Chiqish
-              </button>
-            </>
-          )}
-        </div>
+      <div className="navbar-links">
+        {!user ? (
+          <Link to="/admin/login" className="nav-icon-link" title="Admin Login">
+            <FaUserShield className="admin-icon" />
+          </Link>
+        ) : (
+          <>
+            <span className="admin-indicator">✅ Admin</span>
+            <Link to="/admin/add" className="nav-link">➕ Tovar qo‘shish</Link>
+            <button onClick={handleLogout} className="logout-btn">🔓 Chiqish</button>
+          </>
+        )}
       </div>
     </nav>
   );

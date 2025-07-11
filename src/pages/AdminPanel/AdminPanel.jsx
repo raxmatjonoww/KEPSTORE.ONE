@@ -1,7 +1,7 @@
 // src/pages/AdminPanel.jsx
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { supabase } from "../supabaseClient";
+import { supabase } from "../../supabaseClient";
 
 function AdminPanel() {
   const [products, setProducts] = useState([]);

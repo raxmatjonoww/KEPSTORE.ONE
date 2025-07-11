@@ -1,7 +1,7 @@
-// src/pages/AdminLogin.jsx
 import { useState } from "react";
-import { supabase } from "../supabaseClient";
 import { useNavigate } from "react-router-dom";
+import { supabase } from "../../supabaseClient";
+import "./AdminLogin.css";
 
 function AdminLogin() {
   const [email, setEmail] = useState("");
@@ -10,39 +10,39 @@ function AdminLogin() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
     if (error) {
-      alert("Login xatolik: " + error.message);
+      alert("Kirishda xatolik: " + error.message);
     } else {
-      alert("Admin muvaffaqiyatli kirdi!");
       navigate("/admin");
     }
   };
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <h2>🔐 Admin Login</h2>
-      <form onSubmit={handleLogin} style={{ maxWidth: "400px", display: "flex", flexDirection: "column", gap: "1rem" }}>
+    <div className="admin-login-container">
+      <h2>Admin Login</h2>
+      <form onSubmit={handleLogin} className="admin-login-form">
         <input
           type="email"
-          placeholder="Email"
+          placeholder="Email kiriting"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
+
         <input
           type="password"
-          placeholder="Parol"
+          placeholder="Parol kiriting"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit" style={{ background: "#1a5bff", color: "#fff", padding: "10px" }}>
+
+        <button type="submit" className="btn">
           Kirish
         </button>
       </form>
