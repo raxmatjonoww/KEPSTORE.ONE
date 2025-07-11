@@ -1,13 +1,16 @@
-import { Link as ScrollLink } from "react-scroll"; // ✅ react-scroll dan
-import { Link, useNavigate } from "react-router-dom";
+// src/components/Navbar/Navbar.jsx
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "../../supabaseClient";
-import { FaUserShield } from "react-icons/fa";
+import { FaUserShield, FaBars, FaTimes } from "react-icons/fa";
+import { scroller } from "react-scroll";
 import "./Navbar.css";
 
 function Navbar() {
   const [user, setUser] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
@@ -23,6 +26,19 @@ function Navbar() {
     };
   }, []);
 
+  const handleScroll = (target) => {
+    setMenuOpen(false); // Close menu on click
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: target } });
+    } else {
+      scroller.scrollTo(target, {
+        duration: 700,
+        smooth: "easeInOutQuart",
+        offset: -80,
+      });
+    }
+  };
+
   const handleLogout = async () => {
     await supabase.auth.signOut();
     navigate("/");
@@ -30,29 +46,20 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <ScrollLink
-        to="glavnoe"
-        smooth={true}
-        duration={600}
-        className="navbar-logo"
-      >
+      <span className="navbar-logo" onClick={() => handleScroll("glavnoe")}>
         <img src="/logo.png" alt="Logo" className="logo-img" />
         <span className="logo-text">KEP</span>
-      </ScrollLink>
+      </span>
 
-      <div className="navbar-links">
-        <ScrollLink to="glavnoe" smooth={true} duration={600} className="nav-link">
-          🏠 Главная
-        </ScrollLink>
-        <ScrollLink to="onas" smooth={true} duration={600} className="nav-link">
-          📖 О нас
-        </ScrollLink>
-        <ScrollLink to="faq" smooth={true} duration={600} className="nav-link">
-          ❓ FAQ
-        </ScrollLink>
-        <ScrollLink to="kontakt" smooth={true} duration={600} className="nav-link">
-          📞 Контакты
-        </ScrollLink>
+      <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+        {menuOpen ? <FaTimes /> : <FaBars />}
+      </div>
+
+      <div className={`navbar-links ${menuOpen ? "open" : ""}`}>
+        <span onClick={() => handleScroll("glavnoe")} className="nav-link">🏠 Главная</span>
+        <span onClick={() => handleScroll("onas")} className="nav-link">📖 О нас</span>
+        <span onClick={() => handleScroll("faq")} className="nav-link">❓ FAQ</span>
+        <span onClick={() => handleScroll("kontakt")} className="nav-link">📞 Контакты</span>
 
         {!user ? (
           <Link to="/admin/login" className="nav-icon-link" title="Вход для админа">
