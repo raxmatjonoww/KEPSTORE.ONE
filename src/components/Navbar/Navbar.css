@@ -1,5 +1,3 @@
-/* src/components/Navbar/Navbar.css */
-
 .navbar {
     background-color: #F4ECD0;
     color: #27160C;
@@ -13,7 +11,7 @@
     z-index: 1000;
   }
   
-  /* Logo section */
+  /* Logo */
   .navbar-logo {
     display: flex;
     align-items: center;
@@ -22,16 +20,16 @@
   }
   
   .logo-img {
-    height: 40px;
+    height: 36px;
   }
   
   .logo-text {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: bold;
     color: #27160C;
   }
   
-  /* Right side (links) */
+  /* Right side links */
   .navbar-links {
     display: flex;
     align-items: center;
@@ -39,13 +37,30 @@
   }
   
   .nav-link {
-    font-size: 1rem;
     color: #1a5bff;
+    font-size: 1rem;
     text-decoration: none;
-    transition: 0.3s;
+    font-weight: 500;
+    transition: color 0.2s ease;
   }
   
   .nav-link:hover {
+    color: #0f4fe0;
+  }
+  
+  .admin-indicator {
+    color: #2ecc71;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  
+  .admin-icon {
+    font-size: 1.6rem;
+    color: #27160C;
+    transition: color 0.3s ease;
+  }
+  
+  .admin-icon:hover {
     color: #0f4fe0;
   }
   
@@ -53,30 +68,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 6px;
+    border-radius: 6px;
   }
   
-  .admin-icon {
-    font-size: 1.5rem;
-    color: #27160C;
-    transition: color 0.3s ease;
-  }
-  
-  .admin-icon:hover {
-    color: #1a5bff;
-  }
-  
-  .admin-indicator {
-    font-size: 1rem;
-    color: #2ecc71;
-    font-weight: 600;
-  }
-  
+  /* Logout Button */
   .logout-btn {
     background-color: #e74c3c;
     color: white;
-    border: none;
     padding: 6px 12px;
     font-size: 0.95rem;
+    border: none;
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.2s ease;
@@ -91,14 +93,24 @@
     .navbar {
       flex-direction: column;
       align-items: flex-start;
+      padding: 1rem;
     }
   
     .navbar-links {
       flex-direction: column;
       align-items: flex-start;
       width: 100%;
-      gap: 0.75rem;
-      margin-top: 0.75rem;
+      margin-top: 1rem;
+      gap: 0.8rem;
+    }
+  
+    .logo-text {
+      font-size: 1.3rem;
+    }
+  
+    .logout-btn {
+      width: 100%;
+      text-align: center;
     }
   }
   

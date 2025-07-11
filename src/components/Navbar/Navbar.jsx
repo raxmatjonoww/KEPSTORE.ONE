@@ -1,5 +1,3 @@
-// src/components/Navbar/Navbar.jsx
-
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "../../supabaseClient";
@@ -37,23 +35,19 @@ function Navbar() {
       </Link>
 
       <div className="navbar-links">
+        {/* 🛍 Mahsulotlar sahifasi */}
+        <Link to="/" className="nav-link">🛍 Mahsulotlar</Link>
+
+        {/* 👮 Admin qismi */}
         {!user ? (
-          <Link
-            to="/admin/login"
-            className="nav-icon-link"
-            title="Admin Login"
-          >
+          <Link to="/admin/login" className="nav-icon-link" title="Admin Login">
             <FaUserShield className="admin-icon" />
           </Link>
         ) : (
           <>
             <span className="admin-indicator">✅ Admin</span>
-            <Link to="/admin/add" className="nav-link">
-              ➕ Tovar qo‘shish
-            </Link>
-            <button onClick={handleLogout} className="logout-btn">
-              🔓 Chiqish
-            </button>
+            <Link to="/admin/add" className="nav-link">➕ Tovar qo‘shish</Link>
+            <button onClick={handleLogout} className="logout-btn">🔓 Chiqish</button>
           </>
         )}
       </div>
