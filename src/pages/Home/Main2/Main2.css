@@ -1,0 +1,26 @@
+/* src/components/Main2.css */
+
+.main-2 {
+  background-color: #27160C;
+  text-align: center;
+  padding: 13em 2rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #F4ECD0;
+}
+
+.about-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.about-subtitle {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.about-text {
+  font-size: 1.8rem;
+  line-height: 1.6;
+}

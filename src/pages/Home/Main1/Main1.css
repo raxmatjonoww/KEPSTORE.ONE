@@ -1,0 +1,46 @@
+/* src/components/Main1.css */
+
+.main-1 {
+  min-height: 93vh;
+  background-color: #F4ECD0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.hero-text {
+  max-width: 700px;
+}
+
+.home-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #27160C;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 2rem;
+  color: #322015;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.explore-btn {
+  display: inline-block;
+  background-color: #3e2a1e;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.explore-btn:hover {
+  background-color: #27160C;
+}
