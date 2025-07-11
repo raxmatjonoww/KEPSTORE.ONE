@@ -1,8 +1,8 @@
-// src/components/Navbar/Navbar.jsx
+import { Link as ScrollLink } from "react-scroll"; // ✅ react-scroll dan
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "../../supabaseClient";
-import { FaUserShield } from "react-icons/fa"; // 🔐 ADMIN ICON
+import { FaUserShield } from "react-icons/fa";
 import "./Navbar.css";
 
 function Navbar() {
@@ -10,12 +10,10 @@ function Navbar() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Foydalanuvchi ma’lumotlarini olish
     supabase.auth.getUser().then(({ data }) => {
       setUser(data?.user || null);
     });
 
-    // Auth o‘zgarishini kuzatish
     const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user || null);
     });
@@ -25,32 +23,46 @@ function Navbar() {
     };
   }, []);
 
-  // Chiqish tugmasi
   const handleLogout = async () => {
     await supabase.auth.signOut();
-    navigate("/"); // Chiqqandan keyin bosh sahifaga o‘tadi
+    navigate("/");
   };
 
   return (
     <nav className="navbar">
-      <Link to="/" className="navbar-logo">
+      <ScrollLink
+        to="glavnoe"
+        smooth={true}
+        duration={600}
+        className="navbar-logo"
+      >
         <img src="/logo.png" alt="Logo" className="logo-img" />
         <span className="logo-text">KEP</span>
-      </Link>
+      </ScrollLink>
 
       <div className="navbar-links">
-        <Link to="/" className="nav-link">🏠 Home</Link>
-        <Link to="/products" className="nav-link">🛍️ Products</Link>
+        <ScrollLink to="glavnoe" smooth={true} duration={600} className="nav-link">
+          🏠 Главная
+        </ScrollLink>
+        <ScrollLink to="onas" smooth={true} duration={600} className="nav-link">
+          📖 О нас
+        </ScrollLink>
+        <ScrollLink to="faq" smooth={true} duration={600} className="nav-link">
+          ❓ FAQ
+        </ScrollLink>
+        <ScrollLink to="kontakt" smooth={true} duration={600} className="nav-link">
+          📞 Контакты
+        </ScrollLink>
 
         {!user ? (
-          <Link to="/admin/login" className="nav-icon-link" title="Admin Login">
+          <Link to="/admin/login" className="nav-icon-link" title="Вход для админа">
             <FaUserShield className="admin-icon" />
           </Link>
         ) : (
           <>
-            <span className="admin-indicator">✅ Admin</span>
-            <Link to="/admin/add" className="nav-link">➕ Tovar qo‘shish</Link>
-            <button onClick={handleLogout} className="logout-btn">🔓 Chiqish</button>
+            <span className="admin-indicator">✅ Админ</span>
+            <Link to="/admin/add" className="nav-link">➕ Добавить товар</Link>
+            <button onClick={handleLogout} className="logout-btn">🔓 Выйти</button>
           </>
         )}
       </div>
